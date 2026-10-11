@@ -1,0 +1,447 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080b11">
+<meta name="description" content="A chrome-soaked creative archive of design, words, websites and beautiful little rebellions.">
+<title>YAN.EXE — after hours archive</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg:#080b11; --panel:#111720; --line:#303c49;
+  --cyan:#9bf2ff; --pink:#f5b4e5; --lime:#d7ff9b;
+  --text:#e5eaf0; --muted:#83909f;
+  --chrome:linear-gradient(135deg,#fff 0%,#7d8a9b 13%,#f4f7ff 25%,#788696 40%,#fff 52%,#a3b2c1 64%,#f6eaff 78%,#758395 100%);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+ margin:0;background:var(--bg);color:var(--text);
+ font-family:'Space Grotesk',sans-serif;overflow-x:hidden;
+ background-image:radial-gradient(ellipse at 12% 12%,#13283a 0,transparent 35%),
+ radial-gradient(ellipse at 90% 80%,#241329 0,transparent 32%);
+}
+button,input{font:inherit}
+button{cursor:pointer}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--cyan);color:#080b11}
+.mono{font-family:'DM Mono',monospace}
+.noise{position:fixed;inset:0;pointer-events:none;z-index:99;opacity:.055;
+ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E")}
+.topbar{height:34px;padding:0 18px;display:flex;align-items:center;justify-content:space-between;
+ border-bottom:1px solid var(--line);background:#080b11e8;font-size:10px;letter-spacing:1.4px;color:var(--muted)}
+.status{color:var(--lime)}.status:before{content:'● ';font-size:9px}
+.shell{max-width:1440px;margin:auto;padding:0 22px 100px}
+header{display:flex;justify-content:space-between;align-items:center;padding:20px 0;border-bottom:1px solid var(--line);gap:15px}
+.logo{font-size:18px;font-weight:700;letter-spacing:-1px}
+.logo span{color:var(--cyan)}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav button,.pill,.window-btn{background:#111720;border:1px solid var(--line);color:var(--text);padding:9px 13px;font:10px 'DM Mono',monospace;letter-spacing:1px;transition:.2s}
+.nav button:hover,.pill:hover,.window-btn:hover{border-color:var(--cyan);color:var(--cyan);box-shadow:0 0 18px #9bf2ff17}
+.hero{min-height:490px;display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:center;padding:55px 0 40px}
+.eyebrow{font:10px 'DM Mono',monospace;color:var(--cyan);letter-spacing:3px}
+h1{font-size:clamp(64px,11vw,155px);line-height:.77;letter-spacing:-.105em;margin:30px 0 26px;font-weight:600}
+h1 .chrome{background:var(--chrome);background-size:200% auto;background-clip:text;-webkit-background-clip:text;color:transparent;animation:shine 8s linear infinite}
+@keyframes shine{to{background-position:200% center}}
+.hero p{max-width:470px;font-size:15px;line-height:1.9;color:#a5b1c0}
+.hero p em{color:var(--pink);font-style:normal}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:25px}
+.primary{background:var(--cyan);color:#071017;border:0;padding:13px 17px;font:11px 'DM Mono',monospace;letter-spacing:1px}
+.primary:hover{box-shadow:0 0 24px #9bf2ff50;transform:translateY(-2px)}
+.deck{border:1px solid #667887;border-radius:5px;background:linear-gradient(140deg,#1a232e,#080b11 60%);
+ padding:13px;box-shadow:0 20px 80px #0009, inset 0 0 40px #8edcff08;position:relative}
+.deck:before{content:'';position:absolute;inset:4px;border:1px solid #ffffff0a;pointer-events:none}
+.deck-top{display:flex;justify-content:space-between;font:9px 'DM Mono',monospace;color:var(--muted);padding:3px 2px 12px}
+.orbit{height:270px;position:relative;display:grid;place-items:center;overflow:hidden;
+ background:radial-gradient(circle at 50% 50%,#152a37 0,#0a111a 48%,#080b11 75%)}
+.orbit:before,.orbit:after{content:'';position:absolute;border:1px solid #9bf2ff3c;border-radius:50%;width:205px;height:205px;animation:rotate 18s linear infinite}
+.orbit:after{width:260px;height:115px;transform:rotate(-35deg);border-color:#f5b4e54d;animation:rotate 24s linear infinite reverse}
+@keyframes rotate{to{transform:rotate(360deg)}}
+.lotus{font-size:112px;z-index:2;filter:drop-shadow(0 0 16px #9bf2ff6a);animation:float 5s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-10px) rotate(4deg)}}
+.orbit-label{position:absolute;font:9px 'DM Mono',monospace;color:var(--cyan);z-index:3}
+.orbit-label.a{top:16px;left:14px}.orbit-label.b{bottom:15px;right:14px;color:var(--pink)}
+.deck-bottom{display:flex;justify-content:space-between;gap:10px;padding-top:12px;font:9px 'DM Mono',monospace;color:var(--muted)}
+.marquee{overflow:hidden;border-block:1px solid var(--line);padding:13px 0;color:var(--cyan);font:10px 'DM Mono',monospace;letter-spacing:3px;white-space:nowrap}
+.marquee span{display:inline-block;animation:scroll 28s linear infinite}
+@keyframes scroll{to{transform:translateX(-50%)}}
+.section{padding:60px 0 10px;scroll-margin-top:30px}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:15px;margin-bottom:22px}
+.section-head h2{font-size:clamp(28px,5vw,47px);letter-spacing:-2px;margin:8px 0 0}
+.section-head p{font:10px 'DM Mono',monospace;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.card{background:linear-gradient(145deg,#141c26,#0c1017);border:1px solid var(--line);padding:20px;min-height:190px;position:relative;overflow:hidden;transition:transform .25s,border-color .25s}
+.card:hover{transform:translateY(-5px);border-color:#8dd8e6}
+.card .num{font:10px 'DM Mono',monospace;color:var(--cyan)}
+.card .symbol{font-size:32px;margin:23px 0 17px;filter:drop-shadow(0 0 10px #9bf2ff35)}
+.card h3{font-size:19px;margin:0 0 8px;letter-spacing:-.6px}
+.card p{font-size:12px;line-height:1.8;color:var(--muted);margin:0 0 18px}
+.tags{display:flex;flex-wrap:wrap;gap:5px}
+.tags span{border:1px solid #34404c;padding:5px 7px;color:#b8c4d1;font:9px 'DM Mono',monospace}
+.card .open{position:absolute;right:16px;top:15px;border:0;background:none;color:var(--cyan);font-size:16px}
+.window{border:1px solid #465564;background:#0c1119;box-shadow:0 15px 50px #0007;min-width:0}
+.winbar{height:36px;background:linear-gradient(90deg,#dfe7ee,#778a9d 25%,#d5dbe3 52%,#728196 75%,#f0f3f7);color:#0b1118;display:flex;align-items:center;justify-content:space-between;padding:0 10px;font:10px 'DM Mono',monospace;letter-spacing:.5px}
+.winbar button{background:#101820;color:#d8e8f1;border:0;width:23px;height:22px;margin-left:4px}
+.winbody{padding:18px}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.manifesto{font-size:clamp(24px,4vw,43px);line-height:1.15;letter-spacing:-1.6px;margin:4px 0 22px}
+.manifesto i{color:var(--pink);font-style:normal}
+.smallcopy{font-size:12px;line-height:1.9;color:var(--muted)}
+.flowerbox{min-height:220px;display:grid;place-items:center;text-align:center;
+ background:radial-gradient(ellipse,#23313e,#0a0e15 72%);position:relative;overflow:hidden}
+.flowerbox .bigflower{font-size:85px;filter:drop-shadow(0 0 16px #eab8ef44);animation:float 6s ease-in-out infinite}
+.flowerbox:after{content:'GROW THROUGH THE STATIC';position:absolute;bottom:15px;font:9px 'DM Mono',monospace;letter-spacing:2px;color:var(--pink)}
+.skills{display:flex;flex-wrap:wrap;gap:8px;margin-top:15px}
+.skills span{font-size:11px;border:1px solid #394754;background:#121a23;padding:9px 11px}
+.timeline{display:grid;grid-template-columns:100px 1fr;gap:15px;padding:17px 0;border-bottom:1px solid var(--line)}
+.timeline .date{font:10px 'DM Mono',monospace;color:var(--cyan);padding-top:4px}
+.timeline h3{font-size:15px;margin:0 0 6px}
+.timeline p{font-size:12px;color:var(--muted);line-height:1.8;margin:0}
+.terminal{font:12px 'DM Mono',monospace;line-height:1.9;color:#c7d4df;min-height:185px}
+.terminal .out{color:var(--lime);white-space:pre-wrap;overflow-wrap:anywhere}
+.terminal .hint{color:var(--muted)}
+.termline{display:flex;gap:8px;margin-top:8px}
+.termline label{color:var(--cyan)}
+.termline input{background:transparent;border:0;border-bottom:1px solid #34434f;color:white;outline:none;flex:1;min-width:0;font:12px 'DM Mono',monospace}
+.termline input:focus{border-color:var(--cyan)}
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.contact .big{font-size:clamp(30px,6vw,67px);line-height:.98;letter-spacing:-3px;margin:10px 0 20px}
+footer{margin-top:70px;border-top:1px solid var(--line);padding:20px 0;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;font:9px 'DM Mono',monospace;color:var(--muted)}
+.taskbar{position:fixed;z-index:50;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:6px;align-items:center;
+ padding:7px;background:#111720df;backdrop-filter:blur(18px);border:1px solid #71818f;border-radius:4px;box-shadow:0 10px 45px #000a;max-width:calc(100% - 20px)}
+.taskbar button{background:#1b2631;border:1px solid #344653;color:#dce6ed;padding:10px 12px;font:10px 'DM Mono',monospace;white-space:nowrap}
+.taskbar button:hover{color:var(--cyan);border-color:var(--cyan)}
+.taskbar .start{background:var(--chrome);color:#091018;font-weight:bold}
+#toast{position:fixed;right:18px;bottom:85px;z-index:80;background:#111b24;border:1px solid var(--cyan);padding:14px 18px;font:11px 'DM Mono',monospace;display:none;max-width:300px}
+.cursor-glow{position:fixed;pointer-events:none;width:220px;height:220px;border-radius:50%;background:#8beaff08;transform:translate(-50%,-50%);z-index:0}
+.shell, .topbar, .marquee,.taskbar{position:relative;z-index:1}
+.taskbar{position:fixed}
+@media(min-width:1000px){.hero{min-height:540px}}
+@media(max-width:760px){
+ .shell{padding:0 14px 100px}header{align-items:flex-start;flex-direction:column}
+ .hero{grid-template-columns:1fr;padding-top:42px;gap:30px}
+ .orbit{height:230px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .about-grid,.contact{grid-template-columns:1fr}.section{padding-top:45px}
+ .taskbar{left:10px;right:10px;transform:none;justify-content:space-between;overflow-x:auto}
+ .taskbar button{padding:10px 9px;font-size:9px}
+}
+@media(max-width:420px){.grid{grid-template-columns:1fr}.card{min-height:160px}.section-head p{display:none}h1{font-size:65px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="noise"></div><div class="cursor-glow" id="glow"></div>
+<div class="topbar mono">
+ <span>YAN.EXE / PERSONAL ARCHIVE</span>
+ <span class="status">SYSTEM ONLINE</span>
+ <span id="clock">00:00:00</span>
+</div>
+
+<div class="shell">
+<header>
+ <a href="#home" class="logo">yan<span>✳</span>.exe</a>
+ <nav class="nav">
+  <button data-go="work">01 / WORK</button>
+  <button data-go="about">02 / ABOUT</button>
+  <button data-go="log">03 / LOG</button>
+  <button data-go="contact">04 / CONTACT</button>
+ </nav>
+</header>
+
+<main>
+<section class="hero" id="home">
+ <div>
+  <div class="eyebrow">INDEPENDENT CREATIVE ENTITY // 001</div>
+  <h1>AFTER<br><span class="chrome">HOURS.</span></h1>
+  <p>designer by instinct. writer by accident. internet creature by choice. building beautiful things out of <em>beautifully broken things.</em></p>
+  <div class="hero-actions">
+   <button class="primary" data-go="work">ENTER THE ARCHIVE ↘</button>
+   <button class="pill" id="random">⤨ SURPRISE ME</button>
+  </div>
+ </div>
+ <div class="deck">
+  <div class="deck-top"><span>LIVE FEED // 00xYAN</span><span>NO SIGNAL / ALL SOUL</span></div>
+  <div class="orbit">
+   <span class="orbit-label a">LOTUS_PROTOCOL.exe</span>
+   <div class="lotus">🪷</div>
+   <span class="orbit-label b">flowers grow here too.</span>
+  </div>
+  <div class="deck-bottom"><span>MOOD: CINEMATIC MELANCHOLY</span><span id="uptime">UPTIME 00:00</span></div>
+ </div>
+</section>
+
+<div class="marquee"><span>
+ ✳ MAKE ART / MAKE TROUBLE / MAKE SOMETHING MATTER ✳ NO GODS NO TEMPLATES ✳ CHROME HEART, FLOWER SOUL ✳ MAKE ART / MAKE TROUBLE / MAKE SOMETHING MATTER ✳ NO GODS NO TEMPLATES ✳ CHROME HEART, FLOWER SOUL ✳
+</span></div>
+
+<section class="section" id="work">
+ <div class="section-head"><div><div class="eyebrow">DIRECTORY_01</div><h2>THE FILES.</h2></div><p>SELECT A FILE TO INSPECT ↗</p></div>
+ <div class="grid">
+  <article class="card" data-project="design">
+   <span class="num">FILE_001 / VISUALS</span><button class="open" aria-label="Open graphic design file">↗</button>
+   <div class="symbol">✳</div><h3>Graphic design</h3>
+   <p>Visual identities, editorial layouts, digital posters and pixels with a point to prove.</p>
+   <div class="tags"><span>EDITORIAL</span><span>POSTERS</span><span>ART DIRECTION</span></div>
+  </article>
+  <article class="card" data-project="web">
+   <span class="num">FILE_002 / SYSTEMS</span><button class="open" aria-label="Open web design file">↗</button>
+   <div class="symbol">⌘</div><h3>Web experiments</h3>
+   <p>Personal websites, interactive archives and internet spaces with their own pulse.</p>
+   <div class="tags"><span>HTML/CSS</span><span>JAVASCRIPT</span><span>GITHUB</span></div>
+  </article>
+  <article class="card" data-project="writing">
+   <span class="num">FILE_003 / LANGUAGE</span><button class="open" aria-label="Open writing file">↗</button>
+   <div class="symbol">❋</div><h3>Words & aftermath</h3>
+   <p>Prose, poetry, cultural criticism and stories that leave the light on.</p>
+   <div class="tags"><span>POETRY</span><span>ESSAYS</span><span>CULTURE</span></div>
+  </article>
+  <article class="card" data-project="editorial">
+   <span class="num">FILE_004 / PUBLICATIONS</span><button class="open" aria-label="Open editorial file">↗</button>
+   <div class="symbol">▤</div><h3>Editorial universe</h3>
+   <p>Independent publications, zines, magazine layouts and collective storytelling.</p>
+   <div class="tags"><span>ZINES</span><span>LAYOUT</span><span>ARTS & CULTURE</span></div>
+  </article>
+  <article class="card" data-project="food">
+   <span class="num">FILE_005 / MEMORY</span><button class="open" aria-label="Open food zine file">↗</button>
+   <div class="symbol">❀</div><h3>The Yum Booth</h3>
+   <p>A growing food-media idea exploring memory, culture, recipes and the politics of a plate.</p>
+   <div class="tags"><span>FOOD CULTURE</span><span>CREATIVE DIRECTION</span></div>
+  </article>
+  <article class="card" data-project="misc">
+   <span class="num">FILE_006 / UNKNOWN</span><button class="open" aria-label="Open experiments file">↗</button>
+   <div class="symbol">☄</div><h3>Beautiful accidents</h3>
+   <p>Experiments, unfinished thoughts and other things that refuse to fit a category.</p>
+   <div class="tags"><span>EXPERIMENTAL</span><span>IN PROGRESS</span></div>
+  </article>
+ </div>
+ <p class="smallcopy mono" style="margin-top:14px">NOTE: CLICK ANY FILE TO OPEN ITS DOSSIER. REPLACE THE SAMPLE DETAILS WITH YOUR LIVE PROJECT LINKS.</p>
+</section>
+
+<section class="section" id="about">
+ <div class="section-head"><div><div class="eyebrow">DIRECTORY_02</div><h2>THE CREATURE.</h2></div><p>HUMAN(ISH). CREATIVE ALWAYS.</p></div>
+ <div class="about-grid">
+  <div class="window">
+   <div class="winbar"><span>ABOUT_YAN.txt — NOTEPAD</span><span>✕</span></div>
+   <div class="winbody">
+    <div class="manifesto">i make things<br>because the world<br><i>needs more feeling.</i></div>
+    <p class="smallcopy">I'm Yan — a multidisciplinary creative working across graphic design, web experiments, writing and independent publishing. I like my visuals a little strange, my sentences a little devastating, and my websites like somewhere you accidentally discovered at 2 a.m.</p>
+    <p class="smallcopy">Interested in the space where art meets culture, where digital nostalgia meets new ideas, and where a flower can look as badass as a blade.</p>
+    <div class="skills">
+     <span>✳ Graphic design</span><span>⌘ Web design</span><span>❋ Creative writing</span>
+     <span>▤ Editorial design</span><span>◉ Visual storytelling</span><span>✿ Creative direction</span>
+    </div>
+   </div>
+  </div>
+  <div class="flowerbox">
+   <div><div class="bigflower">🪷</div><p class="mono" style="font-size:10px;color:var(--cyan);letter-spacing:2px">SOFTNESS IS NOT SUBMISSION.</p></div>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="log">
+ <div class="section-head"><div><div class="eyebrow">DIRECTORY_03</div><h2>TRANSMISSION LOG.</h2></div><p>THE WORK BEHIND THE WORK</p></div>
+ <div class="window">
+  <div class="winbar"><span>YAN_ARCHIVE.log</span><span>READ ONLY</span></div>
+  <div class="winbody">
+   <div class="timeline"><div class="date">01 / DESIGN</div><div><h3>Our Peace</h3><p>Graphic design contribution for a publication addressing injustice and world issues. Replace this entry with the final post or design link.</p></div></div>
+   <div class="timeline"><div class="date">02 / WEB</div><div><h3>Websites & digital spaces</h3><p>Building independent web experiences for creative communities and publications. Add screenshots, live URLs and source repositories here.</p></div></div>
+   <div class="timeline"><div class="date">03 / EDITORIAL</div><div><h3>Independent publishing</h3><p>Contributing to literary and cultural spaces through writing, editing, visual design and collaborative projects.</p></div></div>
+   <div class="timeline"><div class="date">04 / NOW</div><div><h3>The Yum Booth</h3><p>Developing a food-based creative publication exploring what people eat, what they remember and what food says about the world.</p></div></div>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="terminal">
+ <div class="section-head"><div><div class="eyebrow">DIRECTORY_04</div><h2>ROOT ACCESS.</h2></div><p>TYPE HELP TO BEGIN</p></div>
+ <div class="window">
+  <div class="winbar"><span>terminal — yan@afterhours:~</span><div><button class="window-btn" id="clearTerm" style="padding:3px 7px">CLR</button></div></div>
+  <div class="winbody terminal" id="terminalOutput" aria-live="polite">
+   <div>YAN.EXE TERMINAL v2.0.26</div>
+   <div>Independent creative system. No corporate soul detected.</div>
+   <div class="out">Type 'help' to see available commands.</div>
+   <div class="termline"><label>yan@deck:~$</label><input id="command" aria-label="Terminal command" autocomplete="off" spellcheck="false" placeholder="type a command..."></div>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="contact">
+ <div class="section-head"><div><div class="eyebrow">DIRECTORY_05</div><h2>MAKE CONTACT.</h2></div><p>TRANSMISSION OPEN</p></div>
+ <div class="contact">
+  <div class="window">
+   <div class="winbar"><span>OUTGOING_MESSAGE.exe</span><span>✳</span></div>
+   <div class="winbody">
+    <div class="big">got a<br>beautiful<br>idea?</div>
+    <p class="smallcopy">For collaborations, design work, writing, publication projects or creative chaos of the good kind.</p>
+    <a class="primary" style="display:inline-block;margin-top:10px" href="mailto:YOUR_EMAIL@example.com?subject=Creative%20collaboration">SEND TRANSMISSION ↗</a>
+    <p class="smallcopy">Replace the placeholder email with your real contact address before publishing.</p>
+   </div>
+  </div>
+  <div class="window">
+   <div class="winbar"><span>FREQUENCIES.txt</span><span>ONLINE</span></div>
+   <div class="winbody">
+    <p class="smallcopy">FIND ME ELSEWHERE ON THE INTERNET.</p>
+    <div style="display:grid;gap:10px;margin-top:20px">
+     <a class="pill" href="https://www.instagram.com/yanrata_/" target="_blank" rel="noopener noreferrer">INSTAGRAM ↗</a>
+     <a class="pill" href="https://yanrata.substack.com/" target="_blank" rel="noopener noreferrer">SUBSTACK ↗</a>
+     <a class="pill" href="https://github.com/" target="_blank" rel="noopener noreferrer">GITHUB ↗</a>
+     <button class="pill" id="copyEmail">COPY EMAIL ADDRESS ⧉</button>
+    </div>
+   </div>
+  </div>
+ </div>
+</section>
+</main>
+<footer><span>YAN.EXE © <span id="year"></span> — MADE WITH INTENTION.</span><span>FLOWERS THROUGH CONCRETE. LIGHT THROUGH STATIC.</span><a href="#home">BACK TO TOP ↑</a></footer>
+</div>
+
+<div class="taskbar" aria-label="Cyberdeck taskbar">
+ <button class="start" data-go="home">✳ YAN.EXE</button>
+ <button data-go="work">FILES</button><button data-go="about">ME</button>
+ <button data-go="terminal">TERM</button><button id="sound">♫ SOUND: OFF</button>
+ <button id="theme">◐ MODE</button>
+</div>
+<div id="toast" role="status"></div>
+
+<script>
+const $=s=>document.querySelector(s);
+const $$=s=>document.querySelectorAll(s);
+const started=Date.now();
+
+function clock(){
+ const d=new Date();
+ $('#clock').textContent=d.toLocaleTimeString('en-GB',{hour12:false});
+ const t=Math.floor((Date.now()-started)/1000);
+ $('#uptime').textContent='UPTIME '+String(Math.floor(t/60)).padStart(2,'0')+':'+String(t%60).padStart(2,'0');
+}
+clock();setInterval(clock,1000);
+$('#year').textContent=new Date().getFullYear();
+
+function toast(msg){
+ const el=$('#toast');el.textContent=msg;el.style.display='block';
+ clearTimeout(toast.timer);toast.timer=setTimeout(()=>el.style.display='none',2600);
+}
+$$('[data-go]').forEach(b=>b.addEventListener('click',()=>{
+ const target=document.getElementById(b.dataset.go);
+ if(target)target.scrollIntoView({behavior:'smooth',block:'start'});
+}));
+$('#random').addEventListener('click',()=>{
+ const sections=['work','about','log','terminal','contact'];
+ const target=sections[Math.floor(Math.random()*sections.length)];
+ document.getElementById(target).scrollIntoView({behavior:'smooth'});
+ toast('ROUTING TO /'+target.toUpperCase()+' ...');
+});
+
+const projects={
+ design:{title:'VISUAL DESIGN DOSSIER',icon:'✳',text:'A collection of graphic design, editorial visuals, campaign artwork and experiments in typography.',items:'ADD: project image URLs, role, year, software and final links.'},
+ web:{title:'WEB EXPERIMENT DOSSIER',icon:'⌘',text:'Websites that behave like places, not brochures. Digital nostalgia, experimental layouts and handmade internet energy.',items:'ADD: live demos, GitHub repositories and screenshots.'},
+ writing:{title:'WRITING ARCHIVE',icon:'❋',text:'Poetry, prose, essays and cultural writing. The kind of work that looks at a feeling until it reveals its teeth.',items:'ADD: publication links, titles, excerpts and credits.'},
+ editorial:{title:'EDITORIAL ARCHIVE',icon:'▤',text:'Independent zines and publications across layout, creative direction, writing and visual storytelling.',items:'ADD: publication covers, issue numbers and contributions.'},
+ food:{title:'THE YUM BOOTH',icon:'❀',text:'A food-based creative publication about recipes, memory, culture, history and the politics behind the plate.',items:'ADD: launch updates, illustration collaborations and issue previews.'},
+ misc:{title:'UNKNOWN TERRITORY',icon:'☄',text:'Unfinished experiments are still evidence of a mind at work. This folder is for the beautiful things that do not fit elsewhere.',items:'ADD: process work, side quests and experiments.'}
+};
+$$('[data-project]').forEach(card=>card.addEventListener('click',()=>{
+ const p=projects[card.dataset.project];
+ openWindow(p.title,`<div style="font-size:45px;margin:8px 0">${p.icon}</div><p>${p.text}</p><p style="color:#9bf2ff">${p.items}</p><button class="primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">DISCUSS A PROJECT ↗</button>`);
+}));
+
+function openWindow(title,content){
+ const w=document.createElement('div');
+ w.className='window';
+ w.style.cssText='position:fixed;z-index:70;width:min(500px,calc(100% - 24px));left:50%;top:50%;transform:translate(-50%,-50%);box-shadow:0 30px 120px #000d';
+ w.innerHTML=`<div class="winbar"><span>${title}</span><button class="close" aria-label="Close window">✕</button></div><div class="winbody smallcopy">${content}</div>`;
+ document.body.appendChild(w);
+ w.querySelector('.close').onclick=()=>w.remove();
+ // Drag window by its title bar on desktop and touch devices.
+ const bar=w.querySelector('.winbar');
+ let drag=null;
+ bar.style.cursor='move';
+ bar.addEventListener('pointerdown',e=>{
+  if(e.target.closest('button'))return;
+  const r=w.getBoundingClientRect();
+  drag={x:e.clientX-r.left,y:e.clientY-r.top};
+  bar.setPointerCapture(e.pointerId);
+ });
+ bar.addEventListener('pointermove',e=>{
+  if(!drag)return;
+  w.style.left=(e.clientX-drag.x+w.offsetWidth/2)+'px';
+  w.style.top=(e.clientY-drag.y+w.offsetHeight/2)+'px';
+  w.style.transform='translate(-50%,-50%)';
+ });
+ bar.addEventListener('pointerup',()=>drag=null);
+}
+const terminalCommands={
+ help:'COMMANDS: help, about, work, socials, flower, date, clear, contact, sudo',
+ about:'YAN.EXE // multidisciplinary creative. designer, writer, web builder. currently growing through the static.',
+ work:'FILES AVAILABLE: design / web / writing / editorial / food / misc. Click a card in THE FILES section.',
+ socials:'INSTAGRAM: @yanrata_ | SUBSTACK: @yanrata | add your other verified links in index.html.',
+ flower:'LOTUS_PROTOCOL: remain soft without surrendering. grow through the concrete. 🌸',
+ date:()=>new Date().toString(),
+ contact:'CONTACT ROUTE OPEN. Scroll to MAKE CONTACT or configure your email link in index.html.',
+ sudo:'permission denied: the flowers are in charge here.'
+};
+const out=$('#terminalOutput'),input=$('#command');
+function runCommand(raw){
+ const cmd=raw.trim().toLowerCase();
+ if(!cmd)return;
+ const line=document.createElement('div');
+ line.textContent='yan@deck:~$ '+raw;out.insertBefore(line,out.querySelector('.termline'));
+ const result=document.createElement('div');result.className='out';
+ if(cmd==='clear'){out.querySelectorAll(':scope > div:not(.termline)').forEach(x=>x.remove());return}
+ result.textContent=Object.prototype.hasOwnProperty.call(terminalCommands,cmd)?
+ (typeof terminalCommands[cmd]==='function'?terminalCommands[cmd]():terminalCommands[cmd]):
+ 'command not found: '+cmd+' — type help for available commands.';
+ out.insertBefore(result,out.querySelector('.termline'));
+ out.scrollTop=out.scrollHeight;
+}
+input.addEventListener('keydown',e=>{
+ if(e.key==='Enter'){runCommand(input.value);input.value=''}
+});
+$('#clearTerm').addEventListener('click',()=>{
+ out.querySelectorAll(':scope > div:not(.termline)').forEach(x=>x.remove());
+});
+$('#copyEmail').addEventListener('click',async()=>{
+ const email='YOUR_EMAIL@example.com';
+ try{await navigator.clipboard.writeText(email);toast('EMAIL COPIED — replace the placeholder first!')}
+ catch(e){toast('EDIT index.html TO ADD YOUR EMAIL ADDRESS.')}
+});
+
+// Ambient oscillator music; starts only after a deliberate click.
+let audioCtx=null,oscillators=[],playing=false;
+$('#sound').addEventListener('click',async()=>{
+ if(playing){
+  oscillators.forEach(o=>{try{o.stop()}catch(e){}});
+  oscillators=[];playing=false;$('#sound').textContent='♫ SOUND: OFF';toast('AMBIENT AUDIO OFF');return;
+ }
+ try{
+  audioCtx=new (window.AudioContext||window.webkitAudioContext)();
+  [110,164.81,220].forEach((freq,i)=>{
+   const o=audioCtx.createOscillator(),g=audioCtx.createGain();
+   o.type=i===1?'sine':'triangle';o.frequency.value=freq;g.gain.value=.012;
+   o.connect(g);g.connect(audioCtx.destination);o.start();oscillators.push(o);
+  });
+  playing=true;$('#sound').textContent='♫ SOUND: ON';toast('LOW-FREQUENCY DREAM SEQUENCE');
+ }catch(e){toast('AUDIO IS NOT AVAILABLE IN THIS BROWSER.')}
+});
+
+// Switch between default night mode and an alternate high-contrast mode.
+let alt=false;
+$('#theme').addEventListener('click',()=>{
+ alt=!alt;
+ document.documentElement.style.setProperty('--cyan',alt?'#e7ff9b':'#9bf2ff');
+ document.documentElement.style.setProperty('--pink',alt?'#ffbf91':'#f5b4e5');
+ document.documentElement.style.setProperty('--bg',alt?'#11100b':'#080b11');
+ toast(alt?'ALTERNATE FREQUENCY ENABLED':'ORIGINAL FREQUENCY RESTORED');
+});
+
+// Subtle pointer glow on devices with a fine pointer.
+if(matchMedia('(pointer:fine)').matches){
+ document.addEventListener('pointermove',e=>{
+  const g=$('#glow');g.style.left=e.clientX+'px';g.style.top=e.clientY+'px';
+ });
+}
+</script>
+</body>
+</html>
